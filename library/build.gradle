@@ -1,0 +1,37 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 24
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 6
+        versionName "1.1.4"
+        //添加如下配置就OK了
+        javaCompileOptions {
+            // 显式声明支持注解
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+def dbflow_version = "3.0.0-beta6"
+
+dependencies {
+    api 'com.android.support:appcompat-v7:24.2.1'
+    api 'com.google.code.gson:gson:2.4'
+    api 'com.github.chihane:AndroidUtils:1.0.10'
+/*
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
+    api "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    api "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"*/
+}
